@@ -22,6 +22,20 @@
   font-size: large;
 }
 
+.menuContainer {
+  width: 644px;
+  height: 544px;
+  background-color: aqua;
+}
+
+.categoryButton {
+  display: block;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.2em;
+  border: 1px #999999 solid;
+  text-align: center;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
