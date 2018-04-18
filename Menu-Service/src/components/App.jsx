@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import MenuBox from './MenuBox.js'
-import BillTab from './BillTab.js'
+import MenuBox from './MenuBox.jsx'
+import BillTab from './BillTab.jsx'
 import axios from 'axios';
+import style from './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -35,12 +34,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
       <button onClick={this.handleClick.bind(this)}>Display Menu</button>
       {(this.state.display) ? <MenuBox /> : <div></div>}
       </div>
