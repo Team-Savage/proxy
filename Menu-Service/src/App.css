@@ -23,17 +23,23 @@
 }
 
 .menuContainer {
+  display: flex;
   width: 644px;
   height: 544px;
   background-color: aqua;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .categoryButton {
+  cursor: pointer;
   display: block;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 1.2em;
   border: 1px #999999 solid;
   text-align: center;
+  width: 119px;
+  height: 50px;
 }
 
 @keyframes App-logo-spin {

@@ -2,18 +2,33 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import MenuBox from './MenuBox.js'
+import BillTab from './BillTab.js'
+import axios from 'axios';
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      display: false
+      display: false,
+      appetizersDisplay: false,
+      mainsDisplay: false,
+      beveragesDisplay: false,
+      appetizerData: [],
+      mainData: [],
+      beverageData: [],
+      extraFoodData: []
     }
+  }
+
+  componentDidMount() {
+    
   }
 
   handleClick() {
     if(!this.state.display) {
       this.setState({display: true});
+    } else if(this.state.display) {
+      this.setState({display: false});
     }
   }
 
