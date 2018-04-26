@@ -7,9 +7,32 @@ console.log('got to router!');
 next();
 });
 
-router.get('/:restaurant', function(req, res) {
-    console.log(db.extraQuery(req.params.restaurant))
-    res.send('Im on the page!');
-})
+router.get('/:restaurant/extra', function(req, res) {
+    db.extraQuery(req.params.restaurant, (data) => {
+        res.send(data);
+    }
+    );
+});
+
+router.get('/:restaurant/main', function(req, res) {
+    db.mainQuery(req.params.restaurant, (data) => {
+        res.send(data);
+    }
+    );
+});
+
+router.get('/:restaurant/beverage', function(req, res) {
+    db.beverageQuery(req.params.restaurant, (data) => {
+        res.send(data);
+    }
+    );
+});
+
+router.get('/:restaurant/appetizer', function(req, res) {
+    db.appetizerQuery(req.params.restaurant, (data) => {
+        res.send(data);
+    }
+    );
+});
 
 module.exports = router;

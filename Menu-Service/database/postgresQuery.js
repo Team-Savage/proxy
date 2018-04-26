@@ -7,42 +7,42 @@ const pool = new Pool({
     port: 5432,
   })
 
-const appetizerQuery = function(callback) {
-  pool.query('SELECT * FROM appetizers', (err, res) => {
+const appetizerQuery = function(restaurant, callback) {
+  pool.query(`SELECT * FROM appetizers WHERE name = '${restaurant}'`, (err, res) => {
     if (err) {
       console.log(err.stack)
     } else {
-      console.log(res.rows)
+      callback(res.rows)
     }
   });
 }
 
-const mainQuery = function(callback) {
-pool.query('SELECT * FROM main', (err, res) => {
+const mainQuery = function(restaurant, callback) {
+  pool.query(`SELECT * FROM main WHERE name = '${restaurant}'`, (err, res) => {
     if (err) {
       console.log(err.stack)
     } else {
-      console.log(res.rows)
+      callback(res.rows)
     }
   });
 }
 
-const beverageQuery = function(callback) {
-    pool.query('SELECT * FROM beverage', (err, res) => {
-        if (err) {
-          console.log(err.stack)
-        } else {
-          console.log(res.rows)
-        }
-      });
+const beverageQuery = function(restaurant, callback) {
+  pool.query(`SELECT * FROM beverage WHERE name = '${restaurant}'`, (err, res) => {
+    if (err) {
+      console.log(err.stack)
+    } else {
+      callback(res.rows)
+    }
+  });
     }
 
 const extraQuery = function(restaurant, callback) {
-        pool.query(`SELECT * FROM extra WHERE name = ${restaurant}`, (err, res) => {
+        pool.query(`SELECT * FROM extra WHERE name = '${restaurant}'`, (err, res) => {
             if (err) {
               console.log(err.stack)
             } else {
-              console.log(res.rows)
+              callback(res.rows)
             }
           });
         }
