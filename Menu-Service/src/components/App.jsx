@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import MenuBox from './MenuBox.jsx'
 import BillTab from './BillTab.jsx'
 import axios from 'axios';
 import style from './App.css';
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -15,7 +15,7 @@ class App extends Component {
       appetizerData: [],
       mainData: [],
       beverageData: [],
-      extraFoodData: []
+      extraFoodData: [],
     }
   }
 
@@ -44,7 +44,6 @@ class App extends Component {
     });
     
     this.forceUpdate();
-    console.log(appState);
   }
 
   handleClick() {
@@ -59,7 +58,12 @@ class App extends Component {
     return (
       <div className="App">
       <button onClick={this.handleClick.bind(this)}>Display Menu</button>
-      {(this.state.display) ? <MenuBox /> : <div></div>}
+      {(this.state.display) ? <MenuBox 
+      appetizerProp={this.state.appetizerData}
+      mainProp={this.state.mainData}
+      extraProp={this.state.extraFoodData}
+      beverageProp={this.state.beverageData}
+      /> : <div></div>}
       </div>
     );
   }
