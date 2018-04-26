@@ -20,7 +20,31 @@ class App extends Component {
   }
 
   componentDidMount() {
+    const appState = this.state;
+    const endpoint = window.location.pathname.slice(3);
+
+    axios.get(`/data/${endpoint}/extra`, {
+    }).then(function(response) {
+      appState.extraFoodData = response.data;
+    });
+
+    axios.get(`/data/${endpoint}/main`, {
+    }).then(function(response) {
+      appState.mainData = response.data;
+    });
+
+    axios.get(`/data/${endpoint}/beverage`, {
+    }).then(function(response) {
+      appState.beverageData = response.data;
+    });
+
+    axios.get(`/data/${endpoint}/appetizer`, {
+    }).then(function(response) {
+      appState.appetizerData = response.data;
+    });
     
+    this.forceUpdate();
+    console.log(appState);
   }
 
   handleClick() {

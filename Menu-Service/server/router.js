@@ -1,11 +1,8 @@
 const express = require('express')
 const router = express.Router();
+const path = require('path');
+const serve = require('express-static');
 const db = require('../database/postgresQuery.js');
-
-router.use(function(req, res, next) {
-console.log('got to router!');
-next();
-});
 
 router.get('/:restaurant/extra', function(req, res) {
     db.extraQuery(req.params.restaurant, (data) => {
