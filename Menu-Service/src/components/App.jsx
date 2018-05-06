@@ -12,10 +12,12 @@ class App extends React.Component {
       appetizersDisplay: false,
       mainsDisplay: false,
       beveragesDisplay: false,
+      extrasDisplay: false,
       appetizerData: [],
       mainData: [],
       beverageData: [],
       extraFoodData: [],
+      total: 0
     }
   }
 
@@ -54,11 +56,47 @@ class App extends React.Component {
     }
   }
 
+  handleMenuCategoryClick(e) {
+    if(e.currentTarget.value === 'Appetizer' && !this.state.appetizersDisplay) {
+      this.setState({appetizersDisplay: true, mainsDisplay: false});
+    } else if(this.state.appetizersDisplay) {
+      this.setState({appetizersDisplay: false});
+    }
+
+    if(e.currentTarget.value === 'Mains' && !this.state.mainsDisplay) {
+      this.setState({mainsDisplay: true, appetizersDisplay: false, beveragesDisplay: false});
+    } else if(this.state.mainsDisplay) {
+      this.setState({mainsDisplay: false});
+    }
+
+    if(e.currentTarget.value === 'Mains' && !this.state.mainsDisplay) {
+      this.setState({mainsDisplay: true, appetizersDisplay: false, beveragesDisplay: false});
+    } else if(this.state.mainsDisplay) {
+      this.setState({mainsDisplay: false});
+    }
+    
+    if(e.currentTarget.value === 'Beverages' && !this.state.beveragesDisplay) {
+      this.setState({beveragesDisplay: true, appetizersDisplay: false, mainsDisplay: false});
+    } else if(this.state.beveragesDisplay) {
+      this.setState({beveragesDisplay: false});
+    }
+
+    if(e.currentTarget.value === 'Extas' && !this.state.extrasDisplay) {
+      this.setState({extrasDisplay: true, appetizersDisplay: false, mainsDisplay: false, beveragesDisplay: false});
+    } else if(this.state.extrasDisplay) {
+      this.setState({beveragesDisplay: false});
+    }
+    console.log(this.state)
+  }
+
   render() {
     return (
       <div className="App">
+      <div>Total: {this.state.total}</div>
       <button onClick={this.handleClick.bind(this)}>Display Menu</button>
-      {(this.state.display) ? <MenuBox 
+      {(this.state.display) ? <MenuBox
+      menuCategoryClick={this.handleMenuCategoryClick.bind(this)}
+      appState={this.state} 
       appetizerProp={this.state.appetizerData}
       mainProp={this.state.mainData}
       extraProp={this.state.extraFoodData}
