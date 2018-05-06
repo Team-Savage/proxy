@@ -12,17 +12,16 @@ export default class MenuBox extends React.Component {
    handleItemClick(e) {
      console.log(e.target.value)
      this.props.appState.total += JSON.parse(e.target.value);
-     //console.log(this.props.appState)
    }
 
   render() {
     return (
     <div className="menuContainer">
       <div className="nav-bar">
-      <button className="appetizers categoryButton" onClick={(e) => {this.props.menuCategoryClick(e)}} value={"Appetizer"}>Appetizer</button>
+      <button className="appetizers categoryButton" onClick={(e) => {this.props.menuCategoryClick(e)}} value={"Appetizer"}>Appetizers</button>
       <button className="mains categoryButton" onClick={(e) => {this.props.menuCategoryClick(e)}} value={"Mains"}>Mains</button>
       <button className="beverages categoryButton" onClick={(e) => {this.props.menuCategoryClick(e)}} value={"Beverages"}>Beverages</button>
-      <button className="extra categoryButton" onClick={(e) => {this.props.menuCategoryClick(e)}} value={"Extras"}>Extra</button>
+      <button className="extra categoryButton" onClick={(e) => {this.props.menuCategoryClick(e)}} value={"Extras"}>Extras</button>
       </div>
       <div className="display-items">
       {(this.props.appState.appetizersDisplay) ? this.props.appetizerProp.map((item) => {
@@ -40,7 +39,7 @@ export default class MenuBox extends React.Component {
     {(this.props.appState.extrasDisplay) ? this.props.extraProp.map((item) => {
         return <button onClick={(e) => {this.handleItemClick(e)}} key={item.item} className="item-button" value={item.price}>{item.item}</button>
       }) : <div></div>}
-      </div>
+    </div>
     </div>
   )
 }
