@@ -1,4 +1,3 @@
-
 var path = require("path");
 
 var DIST_DIR = path.resolve(__dirname, "dist");
@@ -32,7 +31,27 @@ var config = {
             {
                 test: /\.css$/,
                 include: SRC_DIR,
-                use: ['style-loader', 'css-loader'],
+                use: ['style-loader', 'css-loader']
+              },
+              {
+                test: /\.css$/,
+                rules: [
+                  {
+                    test: /\.vue$/,
+                    loader: 'react-vue-loader'
+                  }
+                ]
+              },
+              {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                  {
+                    loader: 'url-loader',
+                    options: {
+                      limit: 8192
+                    }
+                  }
+                ]
               }
         ]
     },

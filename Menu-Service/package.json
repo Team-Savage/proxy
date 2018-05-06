@@ -32,7 +32,10 @@
     "react-animation-frame": "^1.0.1",
     "react-dom": "^15.2.1",
     "react-key-handler": "^1.0.1",
-    "underscore": "^1.8.3"
+    "react-vue": "0.0.5",
+    "react-vue-helper": "0.0.6",
+    "underscore": "^1.8.3",
+    "vue-loader": "^15.0.9"
   },
   "devDependencies": {
     "babel-loader": "^6.2.4",
@@ -40,7 +43,9 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-2": "^6.11.0",
     "css-loader": "^0.28.11",
+    "react-vue-loader": "0.0.7",
     "style-loader": "^0.20.3",
+    "url-loader": "^1.0.1",
     "webpack": "^2.0.0",
     "webpack-dev-server": "^1.14.1"
   }

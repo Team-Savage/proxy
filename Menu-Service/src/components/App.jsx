@@ -17,7 +17,6 @@ class App extends React.Component {
       mainData: [],
       beverageData: [],
       extraFoodData: [],
-      total: 0
     }
   }
 
@@ -64,27 +63,27 @@ class App extends React.Component {
     }
 
     if(e.currentTarget.value === 'Mains' && !this.state.mainsDisplay) {
-      this.setState({mainsDisplay: true, appetizersDisplay: false, beveragesDisplay: false});
+      this.setState({mainsDisplay: true, appetizersDisplay: false, beveragesDisplay: false, extrasDisplay: false});
     } else if(this.state.mainsDisplay) {
       this.setState({mainsDisplay: false});
     }
 
     if(e.currentTarget.value === 'Mains' && !this.state.mainsDisplay) {
-      this.setState({mainsDisplay: true, appetizersDisplay: false, beveragesDisplay: false});
+      this.setState({mainsDisplay: true, appetizersDisplay: false, beveragesDisplay: false, extrasDisplay: false});
     } else if(this.state.mainsDisplay) {
       this.setState({mainsDisplay: false});
     }
     
     if(e.currentTarget.value === 'Beverages' && !this.state.beveragesDisplay) {
-      this.setState({beveragesDisplay: true, appetizersDisplay: false, mainsDisplay: false});
+      this.setState({beveragesDisplay: true, appetizersDisplay: false, mainsDisplay: false, extrasDisplay: false});
     } else if(this.state.beveragesDisplay) {
       this.setState({beveragesDisplay: false});
     }
 
-    if(e.currentTarget.value === 'Extas' && !this.state.extrasDisplay) {
+    if(e.currentTarget.value === 'Extras' && !this.state.extrasDisplay) {
       this.setState({extrasDisplay: true, appetizersDisplay: false, mainsDisplay: false, beveragesDisplay: false});
     } else if(this.state.extrasDisplay) {
-      this.setState({beveragesDisplay: false});
+      this.setState({extrasDisplay: false});
     }
     console.log(this.state)
   }
@@ -92,8 +91,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-      <div>Total: {this.state.total}</div>
-      <button onClick={this.handleClick.bind(this)}>Display Menu</button>
+      <button className="display-menu-button" onClick={this.handleClick.bind(this)}>Menu</button>
       {(this.state.display) ? <MenuBox
       menuCategoryClick={this.handleMenuCategoryClick.bind(this)}
       appState={this.state} 
