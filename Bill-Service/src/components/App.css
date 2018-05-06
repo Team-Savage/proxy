@@ -1,0 +1,39 @@
+body {
+  color: #333;
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリ オ", "Meiryo", Helvetica, Arial, Verdana, sans-serif;
+}
+
+.header {
+    font-size: 13px;
+    background-color: aqua;
+    height: 43px;
+    width: 570px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.bill-container {
+    border-radius: 15px;
+    width: 570px;
+    height: 600px;
+    background-color: aquamarine;
+}
+
+.calculator-container {
+    border-top: 0.5px solid grey;
+    position: absolute;
+    background-color: cornflowerblue;
+    width: 200px;
+    height: 72px;
+    top: 523px;
+    left: 376px;
+}
+
+.item {
+    font-size: 13px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 0.5px solid grey;
+}

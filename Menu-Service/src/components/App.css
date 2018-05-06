@@ -1,10 +1,23 @@
+.display-menu-button {
+  border: none;
+  width: 40px;
+  height: 32px;
+  line-height: 25px;
+  outline: none;
+  cursor: pointer;
+  background-image: url('menuicon.png');
+  background-repeat: no-repeat;
+  background-size: 40px;
+  background-position: left;
+}
+
 .menuContainer {
   display: flex;
   width: 550px;
   height: 2500px;
-  background-color: black;
+  background-color: #fafafa;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .categoryButton {
@@ -25,7 +38,6 @@
   background-size: 25px;
   background-position: right;
   outline: none;
-  margin-right: 20px;
   font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリ オ", "Meiryo", Helvetica, Arial, Verdana, sans-serif;
 }
 
@@ -38,7 +50,7 @@
 }
 .item-button {
   border-color: white;
-  background-color: black;
+  background-color: rgb(71, 68, 68);
   color: white; 
   opacity: 1;
   outline: none;
@@ -51,6 +63,7 @@
 }
 
 .item-button:hover {
+  cursor: pointer;
   opacity: 0.5!important;
 }
 
@@ -58,7 +71,7 @@
   display: grid;
   grid-template-columns: auto 1fr 1fr 1fr 1fr; 
   position: absolute;
-  top: 100px;
+  top: 110px;
 }
 
 .display-items button:nth-child(odd) {
@@ -76,6 +89,7 @@
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
+  justify-content: space-between;
 }
 
 body {

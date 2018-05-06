@@ -1,6 +1,5 @@
 import React from 'react';
 import MenuBox from './MenuBox.jsx'
-import BillTab from './BillTab.jsx'
 import axios from 'axios';
 import style from './App.css';
 
@@ -9,7 +8,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       display: false,
-      appetizersDisplay: false,
+      appetizersDisplay: true,
       mainsDisplay: false,
       beveragesDisplay: false,
       extrasDisplay: false,
@@ -85,13 +84,13 @@ class App extends React.Component {
     } else if(this.state.extrasDisplay) {
       this.setState({extrasDisplay: false});
     }
-    console.log(this.state)
+
   }
 
   render() {
     return (
       <div className="App">
-      <button className="display-menu-button" onClick={this.handleClick.bind(this)}>Menu</button>
+      <button className="display-menu-button" onClick={this.handleClick.bind(this)}></button>
       {(this.state.display) ? <MenuBox
       menuCategoryClick={this.handleMenuCategoryClick.bind(this)}
       appState={this.state} 
