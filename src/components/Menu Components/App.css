@@ -1,39 +1,73 @@
+.menu-service {
+  position: absolute;
+  z-index: 1;
+}
+
 .display-menu-button {
-  border: none;
-  width: 40px;
-  height: 32px;
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  color: white;
   line-height: 25px;
   outline: none;
   cursor: pointer;
-  background-image: url('menuicon.png');
+  font-size: 20px;
+  /* background-image: url('menuicon.png'); */
   background-repeat: no-repeat;
   background-size: 40px;
   background-position: left;
+  background-color: black;
 }
 
 .menuContainer {
   display: flex;
   width: 550px;
-  height: 2500px;
-  background-color: #fafafa;
+  height: auto !important;
   flex-direction: row;
   justify-content: space-between;
 }
 
+.menuContainer:focus {
+  background-color: antiquewhite;
+}
+
+.example-appear {
+  opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
 .categoryButton {
   opacity: 1;
-  color: #333;
+  border-radius: 6px;
+  color: white;
   cursor: pointer;
   text-align: center;
-  border-right: 1px solid grey;
+  border-right: 1px solid white;
   border-right-width: thin;
   padding: 13px 17px 13px 10px;
   width: 119px;
   height: 50px;
+  margin-top: 11px;
+  margin-right: 8px;
+  margin-left: 8px;
   justify-content: center;
   align-content: center;
   font-size: 12px;
-  background-image: url('downarrow.png');
+  background-color: black;
+  background: black url('downarrow.png');
   background-repeat: no-repeat;
   background-size: 25px;
   background-position: right;
@@ -49,8 +83,9 @@
   opacity:.5!important;
 }
 .item-button {
+  transition-duration: 1000ms;
   border-color: white;
-  background-color: rgb(71, 68, 68);
+  background-color: black;
   color: white; 
   opacity: 1;
   outline: none;
@@ -68,10 +103,15 @@
 }
 
 .display-items {
+  opacity: 0.8;
   display: grid;
-  grid-template-columns: auto 1fr 1fr 1fr 1fr; 
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(auto-fill, 120px);
   position: absolute;
-  top: 110px;
+  top: 152px;
+  width: 550;
+  background-color:black; 
+  transition: opacity 300ms ease-in-out 1s;
 }
 
 .display-items button:nth-child(odd) {
@@ -83,13 +123,15 @@
 }
 
 .nav-bar {
-  background-color: #fafafa;
+  opacity: 0.8;
+  background-color: black;
   width: 550px;
   height: 72px;
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
   justify-content: space-between;
+  border-bottom: 1px solid white;
 }
 
 body {

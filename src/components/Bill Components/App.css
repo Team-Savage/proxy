@@ -6,28 +6,30 @@ body {
 .header {
     font-size: 13px;
     background-color: aqua;
-    height: 43px;
+    height: 86px;
     width: 570px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    border-bottom: 1px solid #444444;
 }
 
 .bill-container {
-    border-radius: 15px;
+    position: relative;
     width: 570px;
-    height: 600px;
+    min-height: 600px;
+    height: auto;
     background-color: aquamarine;
 }
 
 .calculator-container {
-    border-top: 0.5px solid grey;
     position: absolute;
+    border-top: 0.5px solid grey;
     background-color: cornflowerblue;
     width: 200px;
     height: 72px;
     top: 523px;
-    left: 376px;
+    left: 368px;
 }
 
 .item {
