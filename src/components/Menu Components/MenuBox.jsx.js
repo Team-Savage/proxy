@@ -2,7 +2,6 @@ import React from 'react'
 import { CSSTransitionGroup } from 'react-transition-group'; 
 
 export default function MenuBox (props) {
-  
     return (
       <CSSTransitionGroup
       transitionName="example"
@@ -17,12 +16,12 @@ export default function MenuBox (props) {
       <button className="beverages categoryButton" onClick={(e) => {props.menuCategoryClick(e)}} value={"Beverages"}>Beverages</button>
       <button className="extra categoryButton" onClick={(e) => {props.menuCategoryClick(e)}} value={"Extras"}>Extras</button>
       </div>
-      <div className="display-items">
+      <div className="display-wrapper">
       {(props.appState.appetizersDisplay) ? props.appetizerProp.map((item) => {
         return <button 
         key={item.item}
         onClick={props.itemClick(item)}
-        className="item-button">{item.item}</button>
+        className="item-button display-item">{item.item}</button>
       }) : <div></div>}
      
       {(props.appState.mainsDisplay) ? props.mainProp.map((item) => {

@@ -22,18 +22,38 @@ class App extends Component {
             this.props.onItemClick(this.state.itemList);
         }
     }
+
+    handleDeleteItem(itemName) {
+     let sortedItemList = this.state.itemList.sort((a, b) => {
+        if (a.item < b.item) {
+          return - 1;
+        }
+        if (a.item > b.item) {
+          return 1;
+        }
+        return 0;
+      });
+     
+      for(let i = 0; i < sortedItemList.length; i++) {
+        if(sortedItemList[i].item === itemName) {
+        sortedItemList.splice(i, 1);
+        this.setState({itemList: this.state.itemList});
+        }
+      }
+    }
+
     render() {
       return (
         <div>
-          <Menu clickItem ={this.handleItemClick} />
-          <Bill itemList={this.props.items} subtotal={this.state.subtotal}/>
+          <Bill 
+          deleteItem = {this.handleDeleteItem.bind(this)}
+          clickItem ={this.handleItemClick} itemList={this.props.items} subtotal={this.state.subtotal}/>
         </div>
       )
     }
   }
 
   const mapStateToProps = (state, props) => {
-      console.log(state, 'from mapStateToProps')
    return { items: state.selectedItems }
   };
    

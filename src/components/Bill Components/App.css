@@ -6,12 +6,20 @@ body {
 .header {
     font-size: 13px;
     background-color: aqua;
-    height: 86px;
+    height: 60px;
     width: 570px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     border-bottom: 1px solid #444444;
+}
+
+.menu {
+    position: absolute;
+}
+
+.bill-category {
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+height: 61;
 }
 
 .bill-container {

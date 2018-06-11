@@ -4,19 +4,18 @@
 }
 
 .display-menu-button {
-  width: 80px;
-  height: 80px;
-  border-radius: 40px;
-  color: white;
+  width: 43px;
+  height: 43px;
+  border: none;
+  background-color: transparent;
   line-height: 25px;
   outline: none;
   cursor: pointer;
   font-size: 20px;
-  /* background-image: url('menuicon.png'); */
+  background-image: url('menuicon.png');
   background-repeat: no-repeat;
   background-size: 40px;
   background-position: left;
-  background-color: black;
 }
 
 .menuContainer {
@@ -102,24 +101,20 @@
   opacity: 0.5!important;
 }
 
-.display-items {
+.display-wrapper {
   opacity: 0.8;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(auto-fill, 120px);
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(auto-fill, 90px);
   position: absolute;
-  top: 152px;
+  top: 115px;
   width: 550;
   background-color:black; 
   transition: opacity 300ms ease-in-out 1s;
 }
 
-.display-items button:nth-child(odd) {
-
-}
-
-.display-items button:nth-child(even) {
-
+.display-item {
+  
 }
 
 .nav-bar {

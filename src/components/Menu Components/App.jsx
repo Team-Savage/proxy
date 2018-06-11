@@ -7,10 +7,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import onClickOutside from "react-onclickoutside";
 
-// const styles = {
-//   transition: 'all 1s ease-out'
-// };
-
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -27,9 +23,7 @@ class App extends React.Component {
       opacity: 1,
       scale: 1
     }
-
   }
-
 
   componentDidMount() {
     const appState = this.state;
@@ -110,7 +104,7 @@ class App extends React.Component {
     return (
       <div className="menu-service">
       <button className="display-menu-button" 
-      onClick={this.handleClick.bind(this)}>Menu</button>
+      onClick={this.handleClick.bind(this)}></button>
       {(this.state.display) ? <MenuBox
       itemClick = {this.props.clickItem}
       menuCategoryClick={this.handleMenuCategoryClick.bind(this)}

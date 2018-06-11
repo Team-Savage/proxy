@@ -1,37 +1,63 @@
 import React, { Component } from 'react';
 import style from './App.css';
 import Calculator from './Calculator.jsx';
+import Menu from '../Menu Components/App.jsx';
+import Item from './Item.jsx';
 
-export default function Bill (props) {
+export class Bill extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      subTotal: 0
+    }
+  }
+
+  handleIncrement(itemWorth) {
+   let newSubTotal = this.state.subTotal += JSON.parse(itemWorth);
+   this.setState({subTotal: newSubTotal})
+  }
+
+  handleDecrement(itemWorth) {
+  let newSubTotal = this.state.subTotal -= JSON.parse(itemWorth);
+  this.setState({subTotal: newSubTotal});
+  }
+
+  render() {
   return (
       <div className="bill-service">
-        <div className="bill-container">
+        <table className="bill-container">
         <div className="header">
-        <span>Item</span>
-        <span>Price</span>
-        
+        <div className="menu">
+        <Menu clickItem={this.props.clickItem}/>
         </div>
-        {(props.itemList) ? props.itemList.items.map((item) => {
-            return <div className="item" >
-            <span>{item.item}</span>
-            <span>{item.price}</span>
-            </div>
+        <tr className="bill-category">
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        </tr>
+        </div>
+        {(this.props.itemList) ? this.props.itemList.items.map((item) => {
+            return <Item 
+            deleteItemFunction={this.props.deleteItem}
+            incrementFunction={this.handleIncrement.bind(this)}
+            decrementFunction={this.handleDecrement.bind(this)} 
+            item={item.item} price={item.price} 
+            billSubTotal={this.state.subTotal.toFixed(2)}/>
         }) : <div></div>}
 
-        <Calculator subtotal={
-          (props.itemList) ? 
-            props.itemList.items.reduce((startingValue, itemValue) => {
-              return startingValue + JSON.parse(itemValue.price)
-            }, 0).toFixed(2) : 0.00
+        <Calculator 
+        subtotal={
+          this.state.subTotal.toFixed(2)
         }
         tax={
-          (props.itemList) ?
-          (props.itemList.items.reduce((startingValue, itemValue) => {
-            return startingValue + JSON.parse(itemValue.price)
-          }, 0) * 0.085).toFixed(2) : 0.00
+          (this.state.subTotal * 0.085).toFixed(2)
         }
         />
-        </div>
+        </table>
       </div>
     )
+  } 
 }
+
+export default Bill;
