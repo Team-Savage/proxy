@@ -20,8 +20,6 @@ class App extends React.Component {
       mainData: [],
       beverageData: [],
       extraFoodData: [],
-      opacity: 1,
-      scale: 1
     }
   }
 
@@ -49,18 +47,6 @@ class App extends React.Component {
     });
     
     this.forceUpdate();
-  }
-
-  onHide() {
-    this.setState({
-      opacity: 0
-    });
-  }
-
-  onScale() {
-    this.setState({
-      scale: this.state.scale > 1 ? 1 : 1.3
-    })
   }
   
   handleClick() {
@@ -100,7 +86,7 @@ class App extends React.Component {
   }
 
   render() {
-
+  
     return (
       <div className="menu-service">
       <button className="display-menu-button" 

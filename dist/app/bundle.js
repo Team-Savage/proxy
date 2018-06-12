@@ -5857,9 +5857,7 @@ var App = function (_React$Component) {
       appetizerData: [],
       mainData: [],
       beverageData: [],
-      extraFoodData: [],
-      opacity: 1,
-      scale: 1
+      extraFoodData: []
     };
     return _this;
   }
@@ -5886,20 +5884,6 @@ var App = function (_React$Component) {
       });
 
       this.forceUpdate();
-    }
-  }, {
-    key: 'onHide',
-    value: function onHide() {
-      this.setState({
-        opacity: 0
-      });
-    }
-  }, {
-    key: 'onScale',
-    value: function onScale() {
-      this.setState({
-        scale: this.state.scale > 1 ? 1 : 1.3
-      });
     }
   }, {
     key: 'handleClick',
@@ -7956,51 +7940,14 @@ var App = function (_Component) {
   function App(props) {
     _classCallCheck(this, App);
 
-    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
-
-    _this.state = {
-      itemList: []
-    };
-    _this.handleItemClick = _this.handleItemClick.bind(_this);
-    return _this;
+    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
   }
 
   _createClass(App, [{
-    key: 'handleItemClick',
-    value: function handleItemClick(item) {
-      var _this2 = this;
-
-      return function () {
-        _this2.state.itemList.push(item);
-        _this2.props.onItemClick(_this2.state.itemList);
-      };
-    }
-  }, {
-    key: 'handleDeleteItem',
-    value: function handleDeleteItem(itemName) {
-      var sortedItemList = this.state.itemList.sort(function (a, b) {
-        if (a.item < b.item) {
-          return -1;
-        }
-        if (a.item > b.item) {
-          return 1;
-        }
-        return 0;
-      });
-
-      for (var i = 0; i < sortedItemList.length; i++) {
-        if (sortedItemList[i].item === itemName) {
-          sortedItemList.splice(i, 1);
-          this.setState({ itemList: this.state.itemList });
-        }
-      }
-    }
-  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement('div', null, _react2.default.createElement(_App2.default, {
-        deleteItem: this.handleDeleteItem.bind(this),
-        clickItem: this.handleItemClick, itemList: this.props.items, subtotal: this.state.subtotal }));
+        itemClickFn: this.props.onItemClick }));
     }
   }]);
 
@@ -8395,12 +8342,23 @@ var Bill = exports.Bill = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Bill.__proto__ || Object.getPrototypeOf(Bill)).call(this, props));
 
     _this.state = {
-      subTotal: 0
+      subTotal: 0,
+      itemList: []
     };
     return _this;
   }
 
   _createClass(Bill, [{
+    key: 'handleItemClick',
+    value: function handleItemClick(item) {
+      var _this2 = this;
+
+      return function () {
+        _this2.state.itemList.push(item);
+        _this2.props.itemClickFn(_this2.state.itemList);
+      };
+    }
+  }, {
     key: 'handleIncrement',
     value: function handleIncrement(itemWorth) {
       var newSubTotal = this.state.subTotal += JSON.parse(itemWorth);
@@ -8413,17 +8371,28 @@ var Bill = exports.Bill = function (_Component) {
       this.setState({ subTotal: newSubTotal });
     }
   }, {
+    key: 'handleDeleteItem',
+    value: function handleDeleteItem(itemName) {
+      for (var i = 0; i < this.state.itemList.length; i++) {
+        if (this.state.itemList[i].item === itemName) {
+          this.state.subTotal = this.state.subTotal - this.state.itemList[i].price;
+          this.state.itemList.splice(i, 1);
+        }
+      }
+      this.setState({ itemList: this.state.itemList });
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
-      return _react2.default.createElement('div', { className: 'bill-service' }, _react2.default.createElement('table', { className: 'bill-container' }, _react2.default.createElement('div', { className: 'header' }, _react2.default.createElement('div', { className: 'menu' }, _react2.default.createElement(_App4.default, { clickItem: this.props.clickItem })), _react2.default.createElement('tr', { className: 'bill-category' }, _react2.default.createElement('th', null, 'Item'), _react2.default.createElement('th', null, 'Price'), _react2.default.createElement('th', null, 'Quantity'))), this.props.itemList ? this.props.itemList.items.map(function (item) {
+      return _react2.default.createElement('div', { className: 'bill-service' }, _react2.default.createElement('table', { className: 'bill-container' }, _react2.default.createElement('div', { className: 'header' }, _react2.default.createElement('div', { className: 'menu' }, _react2.default.createElement(_App4.default, { clickItem: this.handleItemClick.bind(this) })), _react2.default.createElement('tr', { className: 'bill-category' }, _react2.default.createElement('th', null, 'Item'), _react2.default.createElement('th', null, 'Price'), _react2.default.createElement('th', null, 'Quantity'))), this.state.itemList ? this.state.itemList.map(function (item) {
         return _react2.default.createElement(_Item2.default, {
-          deleteItemFunction: _this2.props.deleteItem,
-          incrementFunction: _this2.handleIncrement.bind(_this2),
-          decrementFunction: _this2.handleDecrement.bind(_this2),
+          deleteItemFunction: _this3.handleDeleteItem.bind(_this3),
+          incrementFunction: _this3.handleIncrement.bind(_this3),
+          decrementFunction: _this3.handleDecrement.bind(_this3),
           item: item.item, price: item.price,
-          billSubTotal: _this2.state.subTotal.toFixed(2) });
+          billSubTotal: _this3.state.subTotal.toFixed(2) });
       }) : _react2.default.createElement('div', null), _react2.default.createElement(_Calculator2.default, {
         subtotal: this.state.subTotal.toFixed(2),
         tax: (this.state.subTotal * 0.085).toFixed(2)
@@ -14485,8 +14454,10 @@ var Item = exports.Item = function (_Component) {
       var _this2 = this;
 
       return _react2.default.createElement('div', null, _react2.default.createElement('td', null, this.state.itemName), _react2.default.createElement('td', null, '$ ', (this.state.worth * this.state.quantity).toFixed(2)), _react2.default.createElement('td', null, _react2.default.createElement('input', { type: 'button', value: '-', className: 'qtyminus', field: 'quantity', onClick: function onClick() {
-          _this2.props.decrementFunction(_this2.state.worth);
-          _this2.handleQuantityDecrement();
+          if (_this2.state.quantity > 1) {
+            _this2.props.decrementFunction(_this2.state.worth);
+            _this2.handleQuantityDecrement();
+          }
         } }), _react2.default.createElement('input', { type: 'text', value: this.state.quantity }), _react2.default.createElement('input', { type: 'button', value: '+', className: 'qtyplus', field: 'quantity', onClick: function onClick() {
           _this2.props.incrementFunction(_this2.state.worth);
           _this2.handleQuantityIncrement();

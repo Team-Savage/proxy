@@ -9,7 +9,15 @@ export class Bill extends Component {
     super(props)
 
     this.state = {
-      subTotal: 0
+      subTotal: 0,
+      itemList: []
+    }
+  }
+
+  handleItemClick(item) {
+    return () => {
+        this.state.itemList.push(item)
+        this.props.itemClickFn(this.state.itemList);
     }
   }
 
@@ -23,13 +31,24 @@ export class Bill extends Component {
   this.setState({subTotal: newSubTotal});
   }
 
+  handleDeleteItem(itemName) {
+     for(let i = 0; i < this.state.itemList.length; i++) {
+       if(this.state.itemList[i].item === itemName) {
+       this.state.subTotal = this.state.subTotal - this.state.itemList[i].price;
+       this.state.itemList.splice(i, 1);
+       }
+     }
+     this.setState({itemList: this.state.itemList});
+   }
+
   render() {
+
   return (
       <div className="bill-service">
         <table className="bill-container">
         <div className="header">
         <div className="menu">
-        <Menu clickItem={this.props.clickItem}/>
+        <Menu clickItem={this.handleItemClick.bind(this)}/>
         </div>
         <tr className="bill-category">
         <th>Item</th>
@@ -37,9 +56,9 @@ export class Bill extends Component {
         <th>Quantity</th>
         </tr>
         </div>
-        {(this.props.itemList) ? this.props.itemList.items.map((item) => {
+        {(this.state.itemList) ? this.state.itemList.map((item) => {
             return <Item 
-            deleteItemFunction={this.props.deleteItem}
+            deleteItemFunction={this.handleDeleteItem.bind(this)}
             incrementFunction={this.handleIncrement.bind(this)}
             decrementFunction={this.handleDecrement.bind(this)} 
             item={item.item} price={item.price} 
