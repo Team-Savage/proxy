@@ -31,18 +31,26 @@ export class Bill extends Component {
   this.setState({subTotal: newSubTotal});
   }
 
-  handleDeleteItem(itemName) {
-     for(let i = 0; i < this.state.itemList.length; i++) {
-       if(this.state.itemList[i].item === itemName) {
-       this.state.subTotal = this.state.subTotal - this.state.itemList[i].price;
-       this.state.itemList.splice(i, 1);
+  handleDeleteItem(itemName) { 
+    let index;
+    let copy = this.state.itemList.slice();
+
+     for(let i = 0; i < copy.length; i++) {
+       if(copy[i].item === itemName) {
+       index = i;
        }
      }
-     this.setState({itemList: this.state.itemList});
+
+    copy.splice(index, 1);
+
+    this.setState({
+      itemList:copy,
+      subtotal: this.state.subTotal - this.state.itemList[index].price
+    })
    }
 
   render() {
-
+    
   return (
       <div className="bill-service">
         <table className="bill-container">
@@ -56,12 +64,15 @@ export class Bill extends Component {
         <th>Quantity</th>
         </tr>
         </div>
-        {(this.state.itemList) ? this.state.itemList.map((item) => {
-            return <Item 
+        {(this.state.itemList) ?
+
+          this.state.itemList.map((item) => {
+            return <Item
+            itemName={item.item} 
             deleteItemFunction={this.handleDeleteItem.bind(this)}
             incrementFunction={this.handleIncrement.bind(this)}
             decrementFunction={this.handleDecrement.bind(this)} 
-            item={item.item} price={item.price} 
+            price={item.price} 
             billSubTotal={this.state.subTotal.toFixed(2)}/>
         }) : <div></div>}
 

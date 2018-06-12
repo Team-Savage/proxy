@@ -8373,13 +8373,21 @@ var Bill = exports.Bill = function (_Component) {
   }, {
     key: 'handleDeleteItem',
     value: function handleDeleteItem(itemName) {
-      for (var i = 0; i < this.state.itemList.length; i++) {
-        if (this.state.itemList[i].item === itemName) {
-          this.state.subTotal = this.state.subTotal - this.state.itemList[i].price;
-          this.state.itemList.splice(i, 1);
+      var index = void 0;
+      var copy = this.state.itemList.slice();
+
+      for (var i = 0; i < copy.length; i++) {
+        if (copy[i].item === itemName) {
+          index = i;
         }
       }
-      this.setState({ itemList: this.state.itemList });
+
+      copy.splice(index, 1);
+
+      this.setState({
+        itemList: copy,
+        subtotal: this.state.subTotal - this.state.itemList[index].price
+      });
     }
   }, {
     key: 'render',
@@ -8388,10 +8396,11 @@ var Bill = exports.Bill = function (_Component) {
 
       return _react2.default.createElement('div', { className: 'bill-service' }, _react2.default.createElement('table', { className: 'bill-container' }, _react2.default.createElement('div', { className: 'header' }, _react2.default.createElement('div', { className: 'menu' }, _react2.default.createElement(_App4.default, { clickItem: this.handleItemClick.bind(this) })), _react2.default.createElement('tr', { className: 'bill-category' }, _react2.default.createElement('th', null, 'Item'), _react2.default.createElement('th', null, 'Price'), _react2.default.createElement('th', null, 'Quantity'))), this.state.itemList ? this.state.itemList.map(function (item) {
         return _react2.default.createElement(_Item2.default, {
+          itemName: item.item,
           deleteItemFunction: _this3.handleDeleteItem.bind(_this3),
           incrementFunction: _this3.handleIncrement.bind(_this3),
           decrementFunction: _this3.handleDecrement.bind(_this3),
-          item: item.item, price: item.price,
+          price: item.price,
           billSubTotal: _this3.state.subTotal.toFixed(2) });
       }) : _react2.default.createElement('div', null), _react2.default.createElement(_Calculator2.default, {
         subtotal: this.state.subTotal.toFixed(2),
@@ -14369,22 +14378,10 @@ function Calculator(props) {
 "use strict";
 
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Item = undefined;
-
-var _createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-  };
-}();
+exports.default = Item;
 
 var _react = __webpack_require__(6);
 
@@ -14394,83 +14391,28 @@ function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
 
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
+function Item(props) {
+
+  // componentWillMount() {
+  //    this.props.incrementFunction(this.state.price);
+  // }
+
+  // handleQuantityIncrement() {
+  //   let quantityIncrement = this.state.quantity + 1;
+  //   this.setState({quantity: quantityIncrement});
+  // }
+
+  // handleQuantityDecrement() {
+  //   let quantityDecrement = this.state.quantity - 1;
+  //   this.setState({quantity: quantityDecrement});
+  // }
+  return _react2.default.createElement('div', { className: 'item' }, _react2.default.createElement('td', null, props.itemName), _react2.default.createElement('td', null, '$ ', props.price), _react2.default.createElement('td', null, _react2.default.createElement('input', { type: 'button', value: '-', className: 'qtyminus', field: 'quantity' }), _react2.default.createElement('input', { type: 'text', value: '1' }), _react2.default.createElement('input', { type: 'button', value: '+', className: 'qtyplus', field: 'quantity'
+  }), _react2.default.createElement('input', { type: 'button', value: 'x', className: 'deleteItem',
+    onClick: function onClick() {
+      props.deleteItemFunction(props.itemName);
+    }
+  })));
 }
-
-function _possibleConstructorReturn(self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-}
-
-var Item = exports.Item = function (_Component) {
-  _inherits(Item, _Component);
-
-  function Item(props) {
-    _classCallCheck(this, Item);
-
-    var _this = _possibleConstructorReturn(this, (Item.__proto__ || Object.getPrototypeOf(Item)).call(this, props));
-
-    _this.state = {
-      itemName: _this.props.item,
-      price: _this.props.price,
-      quantity: 1,
-      worth: _this.props.price
-    };
-
-    _this.handleQuantityIncrement.bind(_this);
-    return _this;
-  }
-
-  _createClass(Item, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      this.props.incrementFunction(this.state.price);
-    }
-  }, {
-    key: 'handleQuantityIncrement',
-    value: function handleQuantityIncrement() {
-      var quantityIncrement = this.state.quantity + 1;
-      this.setState({ quantity: quantityIncrement });
-    }
-  }, {
-    key: 'handleQuantityDecrement',
-    value: function handleQuantityDecrement() {
-      var quantityDecrement = this.state.quantity - 1;
-      this.setState({ quantity: quantityDecrement });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      return _react2.default.createElement('div', null, _react2.default.createElement('td', null, this.state.itemName), _react2.default.createElement('td', null, '$ ', (this.state.worth * this.state.quantity).toFixed(2)), _react2.default.createElement('td', null, _react2.default.createElement('input', { type: 'button', value: '-', className: 'qtyminus', field: 'quantity', onClick: function onClick() {
-          if (_this2.state.quantity > 1) {
-            _this2.props.decrementFunction(_this2.state.worth);
-            _this2.handleQuantityDecrement();
-          }
-        } }), _react2.default.createElement('input', { type: 'text', value: this.state.quantity }), _react2.default.createElement('input', { type: 'button', value: '+', className: 'qtyplus', field: 'quantity', onClick: function onClick() {
-          _this2.props.incrementFunction(_this2.state.worth);
-          _this2.handleQuantityIncrement();
-        } }), _react2.default.createElement('input', { type: 'button', value: 'x', className: 'deleteItem', onClick: function onClick() {
-          _this2.props.deleteItemFunction(_this2.state.itemName);
-        } })));
-    }
-  }]);
-
-  return Item;
-}(_react.Component);
-
-exports.default = Item;
 
 /***/ }),
 /* 135 */
