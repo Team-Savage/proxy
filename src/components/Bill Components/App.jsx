@@ -33,6 +33,7 @@ export class Bill extends Component {
         if(!itemExists) {
         this.state.itemList.push(item);  
         }
+
         this.setState({subTotal: this.state.subTotal + JSON.parse(item.price)});
         this.props.itemClickFn(this.state.itemList);
     }
@@ -84,7 +85,7 @@ export class Bill extends Component {
      }
 
     copy.splice(index, 1);
-
+    this.state.itemList[index].quantity = 1;
     this.setState({
       itemList:copy,
       subTotal: this.state.subTotal - totalItemValue
@@ -92,7 +93,7 @@ export class Bill extends Component {
    }
 
   render() {
-    
+  console.log(this.state.itemList)  
   return (
       <div className="bill-service">
         <table className="bill-container">

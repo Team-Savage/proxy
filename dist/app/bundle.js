@@ -8374,6 +8374,7 @@ var Bill = exports.Bill = function (_Component) {
         if (!itemExists) {
           _this2.state.itemList.push(item);
         }
+
         _this2.setState({ subTotal: _this2.state.subTotal + JSON.parse(item.price) });
         _this2.props.itemClickFn(_this2.state.itemList);
       };
@@ -8427,7 +8428,7 @@ var Bill = exports.Bill = function (_Component) {
       }
 
       copy.splice(index, 1);
-
+      this.state.itemList[index].quantity = 1;
       this.setState({
         itemList: copy,
         subTotal: this.state.subTotal - totalItemValue
@@ -8438,6 +8439,7 @@ var Bill = exports.Bill = function (_Component) {
     value: function render() {
       var _this3 = this;
 
+      console.log(this.state.itemList);
       return _react2.default.createElement('div', { className: 'bill-service' }, _react2.default.createElement('table', { className: 'bill-container' }, _react2.default.createElement('div', { className: 'header' }, _react2.default.createElement('div', { className: 'menu' }, _react2.default.createElement(_App4.default, { clickItem: this.handleItemClick.bind(this) })), _react2.default.createElement('tr', { className: 'bill-category' }, _react2.default.createElement('th', null, 'Item'), _react2.default.createElement('th', null, 'Price'), _react2.default.createElement('th', null, 'Quantity'))), this.state.itemList ? this.state.itemList.map(function (item) {
         return _react2.default.createElement(_Item2.default, {
           quantity: item.quantity ? item.quantity : 1,
