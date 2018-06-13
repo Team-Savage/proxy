@@ -3,6 +3,7 @@ import style from './App.css';
 import Calculator from './Calculator.jsx';
 import Menu from '../Menu Components/App.jsx';
 import Item from './Item.jsx';
+import _ from 'underscore';
 
 export class Bill extends Component {
   constructor(props) {
@@ -16,28 +17,69 @@ export class Bill extends Component {
 
   handleItemClick(item) {
     return () => {
-        this.state.itemList.push(item)
+        let itemExists = false;
+
+        for(let i = 0; i < this.state.itemList.length; i++) {
+          if(this.state.itemList[i].item === item.item) {
+            itemExists = true;
+            if(!this.state.itemList[i].quantity) {
+              this.state.itemList[i].quantity = 2;
+            } else {
+              this.state.itemList[i].quantity++;
+            }
+          }
+        }
+        
+        if(!itemExists) {
+        this.state.itemList.push(item);  
+        }
+        this.setState({subTotal: this.state.subTotal + JSON.parse(item.price)});
         this.props.itemClickFn(this.state.itemList);
     }
   }
 
-  handleIncrement(itemWorth) {
-   let newSubTotal = this.state.subTotal += JSON.parse(itemWorth);
-   this.setState({subTotal: newSubTotal})
+  handleIncrement(itemName, itemWorth) {
+    for(let i = 0; i < this.state.itemList.length; i++) {
+      if(this.state.itemList[i].item === itemName) {
+        if(!this.state.itemList[i].quantity) {
+          this.state.itemList[i].quantity = 2;
+        } else {
+          this.state.itemList[i].quantity++;
+        }      
+        break;
+      }
+    }
+
+    let newSubTotal = this.state.subTotal += JSON.parse(itemWorth);
+    this.setState({subTotal: newSubTotal})
   }
 
-  handleDecrement(itemWorth) {
-  let newSubTotal = this.state.subTotal -= JSON.parse(itemWorth);
-  this.setState({subTotal: newSubTotal});
+  handleDecrement(itemName, itemWorth) {
+
+    for(let i = 0; i < this.state.itemList.length; i++) {
+      if(this.state.itemList[i].item === itemName) {
+        if(this.state.itemList[i].quantity && this.state.itemList[i].quantity > 1) {
+          this.state.itemList[i].quantity--;        
+          let newSubTotal = this.state.subTotal -= JSON.parse(itemWorth);
+          this.setState({subTotal: newSubTotal})
+        }     
+        break;
+      }
+    }
+
   }
 
-  handleDeleteItem(itemName) { 
+  handleDeleteItem(itemName, itemPrice) { 
     let index;
     let copy = this.state.itemList.slice();
+    let totalItemValue = JSON.parse(itemPrice);
 
      for(let i = 0; i < copy.length; i++) {
        if(copy[i].item === itemName) {
        index = i;
+        if(copy[i].quantity) {
+          totalItemValue = copy[i].quantity * JSON.parse(copy[i].price);
+        } 
        }
      }
 
@@ -45,7 +87,7 @@ export class Bill extends Component {
 
     this.setState({
       itemList:copy,
-      subtotal: this.state.subTotal - this.state.itemList[index].price
+      subTotal: this.state.subTotal - totalItemValue
     })
    }
 
@@ -65,9 +107,10 @@ export class Bill extends Component {
         </tr>
         </div>
         {(this.state.itemList) ?
-
+          
           this.state.itemList.map((item) => {
             return <Item
+            quantity={(item.quantity) ? item.quantity : 1}
             itemName={item.item} 
             deleteItemFunction={this.handleDeleteItem.bind(this)}
             incrementFunction={this.handleIncrement.bind(this)}
