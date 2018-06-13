@@ -93,7 +93,7 @@ export class Bill extends Component {
    }
 
   render() {
-  console.log(this.state.itemList)  
+ 
   return (
       <div className="bill-service">
         <table className="bill-container">

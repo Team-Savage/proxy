@@ -8439,7 +8439,6 @@ var Bill = exports.Bill = function (_Component) {
     value: function render() {
       var _this3 = this;
 
-      console.log(this.state.itemList);
       return _react2.default.createElement('div', { className: 'bill-service' }, _react2.default.createElement('table', { className: 'bill-container' }, _react2.default.createElement('div', { className: 'header' }, _react2.default.createElement('div', { className: 'menu' }, _react2.default.createElement(_App4.default, { clickItem: this.handleItemClick.bind(this) })), _react2.default.createElement('tr', { className: 'bill-category' }, _react2.default.createElement('th', null, 'Item'), _react2.default.createElement('th', null, 'Price'), _react2.default.createElement('th', null, 'Quantity'))), this.state.itemList ? this.state.itemList.map(function (item) {
         return _react2.default.createElement(_Item2.default, {
           quantity: item.quantity ? item.quantity : 1,
@@ -14414,8 +14413,7 @@ function _interopRequireDefault(obj) {
 }
 
 function Calculator(props) {
-
-  return _react2.default.createElement("div", null, _react2.default.createElement("div", { className: "calculator-container" }, _react2.default.createElement("div", null, "Subtotal: $", props.subtotal), _react2.default.createElement("div", null, "Tax: $ ", props.tax), _react2.default.createElement("div", null, "Total: $ ", (JSON.parse(props.subtotal) + JSON.parse(props.tax)).toFixed(2))));
+  return _react2.default.createElement("div", null, _react2.default.createElement("div", { className: "calculator-container" }, _react2.default.createElement("div", null, "Subtotal: $", JSON.parse(props.subtotal).toFixed(2)), _react2.default.createElement("div", null, "Tax: $ ", JSON.parse(props.tax).toFixed(2)), _react2.default.createElement("div", null, "Total: $ ", (JSON.parse(props.subtotal) + JSON.parse(props.tax)).toFixed(2))));
 }
 
 /***/ }),
