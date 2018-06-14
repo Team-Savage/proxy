@@ -15494,7 +15494,7 @@ exports = module.exports = __webpack_require__(71)(false);
 
 
 // module
-exports.push([module.i, ".menu-service {\n  position: absolute;\n  z-index: 1;\n}\n\n.display-menu-button {\n  width: 43px;\n  height: 43px;\n  border: none;\n  background-color: transparent;\n  line-height: 25px;\n  outline: none;\n  cursor: pointer;\n  font-size: 20px;\n  background-image: url(" + escape(__webpack_require__(282)) + ");\n  background-repeat: no-repeat;\n  background-size: 25px;\n  background-position: left;\n}\n\n.menuContainer {\n  display: flex;\n  width: 550px;\n  height: auto !important;\n  flex-direction: row;\n  justify-content: space-between;\n}\n\n.menuContainer:focus {\n  background-color: antiquewhite;\n}\n\n.example-appear {\n  opacity: 0.01;\n}\n\n.example-appear.example-appear-active {\n  opacity: 1;\n  transition: opacity .5s ease-in;\n}\n\n.example-leave {\n  opacity: 1;\n}\n\n.example-leave.example-leave-active {\n  opacity: 0.01;\n  transition: opacity 300ms ease-in;\n}\n\n.categoryButton {\n  opacity: 1;\n  border-radius: 6px;\n  color: white;\n  cursor: pointer;\n  text-align: center;\n  border-right: 1px solid white;\n  border-right-width: thin;\n  padding: 13px 17px 13px 10px;\n  width: 119px;\n  height: 50px;\n  margin-top: 11px;\n  margin-right: 8px;\n  margin-left: 8px;\n  justify-content: center;\n  align-content: center;\n  font-size: 12px;\n  background-color: black;\n  background: black url(" + escape(__webpack_require__(281)) + ");\n  background-repeat: no-repeat;\n  background-size: 25px;\n  background-position: right;\n  outline: none;\n  font-family: \"\\30D2\\30E9\\30AE\\30CE\\89D2\\30B4   Pro W3\", \"Hiragino Kaku Gothic Pro\", \"\\30E1\\30A4\\30EA   \\30AA\", \"Meiryo\", Helvetica, Arial, Verdana, sans-serif;\n}\n\n.categoryButton:hover {\n  opacity:.5!important;\n}\n\n.categoryButton:focus {\n  opacity:.5!important;\n}\n.item-button {\n  transition-duration: 1000ms;\n  border-color: white;\n  background-color: black;\n  color: white; \n  opacity: 1;\n  outline: none;\n  margin-top: 8px;\n  margin: 5px;\n  height: 80px;\n  width: 100px;\n  font-size: 12px;\n  font-family: \"\\30D2\\30E9\\30AE\\30CE\\89D2\\30B4   Pro W3\", \"Hiragino Kaku Gothic Pro\", \"\\30E1\\30A4\\30EA   \\30AA\", \"Meiryo\", Helvetica, Arial, Verdana, sans-serif;\n}\n\n.item-button:hover {\n  cursor: pointer;\n  opacity: 0.5!important;\n}\n\n.display-wrapper {\n  opacity: 0.8;\n  display: grid;\n  grid-template-columns: repeat(5, 1fr);\n  grid-template-rows: repeat(auto-fill, 90px);\n  position: absolute;\n  top: 115px;\n  width: 550;\n  background-color:black; \n  transition: opacity 300ms ease-in-out 1s;\n}\n\n.display-item {\n  \n}\n\n.nav-bar {\n  opacity: 0.8;\n  background-color: black;\n  width: 550px;\n  height: 72px;\n  display: flex;\n  flex-direction: row;\n  box-sizing: border-box;\n  justify-content: space-between;\n  border-bottom: 1px solid white;\n}\n\nbody {\n  color: #333;\n  font-family: \"\\30D2\\30E9\\30AE\\30CE\\89D2\\30B4   Pro W3\", \"Hiragino Kaku Gothic Pro\", \"\\30E1\\30A4\\30EA   \\30AA\", \"Meiryo\", Helvetica, Arial, Verdana, sans-serif;\n}", ""]);
+exports.push([module.i, ".menu-service {\n  position: absolute;\n  z-index: 1;\n}\n\n.display-menu-button {\n  width: 43px;\n  height: 43px;\n  border: none;\n  background-color: transparent;\n  line-height: 25px;\n  outline: none;\n  cursor: pointer;\n  font-size: 20px;\n  background-image: url(" + escape(__webpack_require__(287)) + ");\n  background-repeat: no-repeat;\n  background-size: 25px;\n  background-position: left;\n}\n\n.menuContainer {\n  display: flex;\n  width: 550px;\n  height: auto !important;\n  flex-direction: row;\n  justify-content: space-between;\n}\n\n.menuContainer:focus {\n  background-color: antiquewhite;\n}\n\n.example-appear {\n  opacity: 0.01;\n}\n\n.example-appear.example-appear-active {\n  opacity: 1;\n  transition: opacity .5s ease-in;\n}\n\n.example-leave {\n  opacity: 1;\n}\n\n.example-leave.example-leave-active {\n  opacity: 0.01;\n  transition: opacity 300ms ease-in;\n}\n\n.categoryButton {\n  opacity: 1;\n  border-radius: 6px;\n  color: white;\n  cursor: pointer;\n  text-align: center;\n  border-right: 1px solid white;\n  border-right-width: thin;\n  padding: 13px 17px 13px 10px;\n  width: 119px;\n  height: 50px;\n  margin-top: 11px;\n  margin-right: 8px;\n  margin-left: 8px;\n  justify-content: center;\n  align-content: center;\n  font-size: 12px;\n  background-color: black;\n  background: black url(" + escape(__webpack_require__(281)) + ");\n  background-repeat: no-repeat;\n  background-size: 25px;\n  background-position: right;\n  outline: none;\n  font-family: \"\\30D2\\30E9\\30AE\\30CE\\89D2\\30B4   Pro W3\", \"Hiragino Kaku Gothic Pro\", \"\\30E1\\30A4\\30EA   \\30AA\", \"Meiryo\", Helvetica, Arial, Verdana, sans-serif;\n}\n\n.categoryButton:hover {\n  opacity:.5!important;\n}\n\n.categoryButton:focus {\n  opacity:.5!important;\n}\n.item-button {\n  transition-duration: 1000ms;\n  border-color: white;\n  background-color: black;\n  color: white; \n  opacity: 1;\n  outline: none;\n  margin-top: 8px;\n  margin: 5px;\n  height: 80px;\n  width: 100px;\n  font-size: 12px;\n  font-family: \"\\30D2\\30E9\\30AE\\30CE\\89D2\\30B4   Pro W3\", \"Hiragino Kaku Gothic Pro\", \"\\30E1\\30A4\\30EA   \\30AA\", \"Meiryo\", Helvetica, Arial, Verdana, sans-serif;\n}\n\n.item-button:hover {\n  cursor: pointer;\n  opacity: 0.5!important;\n}\n\n.display-wrapper {\n  opacity: 0.8;\n  display: grid;\n  grid-template-columns: repeat(5, 1fr);\n  grid-template-rows: repeat(auto-fill, 90px);\n  position: absolute;\n  top: 115px;\n  width: 550;\n  background-color:black; \n  transition: opacity 300ms ease-in-out 1s;\n}\n\n.display-item {\n  \n}\n\n.nav-bar {\n  opacity: 0.8;\n  background-color: black;\n  width: 550px;\n  height: 72px;\n  display: flex;\n  flex-direction: row;\n  box-sizing: border-box;\n  justify-content: space-between;\n  border-bottom: 1px solid white;\n}\n\nbody {\n  color: #333;\n  font-family: \"\\30D2\\30E9\\30AE\\30CE\\89D2\\30B4   Pro W3\", \"Hiragino Kaku Gothic Pro\", \"\\30E1\\30A4\\30EA   \\30AA\", \"Meiryo\", Helvetica, Arial, Verdana, sans-serif;\n}", ""]);
 
 // exports
 
@@ -30919,12 +30919,7 @@ function symbolObservablePonyfill(root) {
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABmJLR0QA/wD/AP+gvaeTAAAAjUlEQVR4nO3ZIQ7DUBBDQR/dMLduUUlJUOQvZUbyAfbRTQAAAAAAAAAAAAAAAAAAAO5dST6H7nrw7qM0+9j/64P3HqnZR39t/J9G/LlG/LlG/LlG/LlG/LlG/LlG/LlG/LlG/LlG/LlG/LlG/LlG/LlG/LlG/LlG/LkrL3ojAgAAAAAAAAAAAAAAAHCWLzaZjrQrlYBIAAAAAElFTkSuQmCC"
 
 /***/ }),
-/* 282 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "04bf4e6608a047d249d1982addb3c787.png";
-
-/***/ }),
+/* 282 */,
 /* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -31049,6 +31044,13 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 286 */,
+/* 287 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "7ff019be8bafef95cb66fa558a885171.png";
 
 /***/ })
 /******/ ]);
