@@ -12,9 +12,9 @@
   outline: none;
   cursor: pointer;
   font-size: 20px;
-  background-image: url('menuicon.png');
+  background-image: url('fork.png');
   background-repeat: no-repeat;
-  background-size: 40px;
+  background-size: 25px;
   background-position: left;
 }
 

@@ -25,19 +25,18 @@ height: 61;
 .bill-container {
     position: relative;
     width: 570px;
-    min-height: 600px;
+    min-height: 528px;
     height: auto;
     background-color: aquamarine;
 }
 
 .calculator-container {
-    position: absolute;
+    position: relative;
     border-top: 0.5px solid grey;
     background-color: cornflowerblue;
-    width: 200px;
+    width: 570px;
     height: 72px;
-    top: 523px;
-    left: 368px;
+    align-content: center;
 }
 
 .item {
@@ -46,4 +45,26 @@ height: 61;
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 0.5px solid grey;
+}
+
+.qty {
+    position: relative;
+    right: 59px;
+}
+
+.price {
+    position: absolute;
+    left: 252px;
+}
+
+.itemName {
+    position: relative;
+    left: 35px;
+}
+
+.itemContainer {
+    position: relative;
+    height: auto;
+    width: 570  px;
+    background-color: orange;
 }

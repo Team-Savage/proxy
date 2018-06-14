@@ -96,21 +96,23 @@ export class Bill extends Component {
  
   return (
       <div className="bill-service">
-        <table className="bill-container">
+        <div className="bill-container">
         <div className="header">
         <div className="menu">
         <Menu clickItem={this.handleItemClick.bind(this)}/>
         </div>
-        <tr className="bill-category">
-        <th>Item</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        </tr>
+        <div className="bill-category">
+        <div>Item</div>
+        <div>Price</div>
+        <div>Quantity</div>
         </div>
-        {(this.state.itemList) ?
-          
-          this.state.itemList.map((item) => {
+        </div>
+        <div className="itemContainer">
+        {(this.state.itemList) ?        
+
+          this.state.itemList.map((item, index) => {
             return <Item
+            key={index}
             quantity={(item.quantity) ? item.quantity : 1}
             itemName={item.item} 
             deleteItemFunction={this.handleDeleteItem.bind(this)}
@@ -119,7 +121,8 @@ export class Bill extends Component {
             price={item.price} 
             billSubTotal={this.state.subTotal.toFixed(2)}/>
         }) : <div></div>}
-
+        </div>
+        </div>
         <Calculator 
         subtotal={
           this.state.subTotal.toFixed(2)
@@ -128,7 +131,6 @@ export class Bill extends Component {
           (this.state.subTotal * 0.085).toFixed(2)
         }
         />
-        </table>
       </div>
     )
   } 
