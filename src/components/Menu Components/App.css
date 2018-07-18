@@ -104,11 +104,15 @@
 .display-wrapper {
   opacity: 0.8;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(auto-fill, 90px);
+  grid-column: span 5;
+  grid-template-columns: repeat(5 , 1fr);
+  grid-template-rows: auto;
   position: absolute;
   top: 115px;
-  width: 550;
+  width: 550px;
+  border-color: white;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   background-color:black; 
   transition: opacity 300ms ease-in-out 1s;
 }
@@ -127,6 +131,9 @@
   box-sizing: border-box;
   justify-content: space-between;
   border-bottom: 1px solid white;
+  border-color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 body {

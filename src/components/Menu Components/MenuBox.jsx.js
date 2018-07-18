@@ -2,6 +2,7 @@ import React from 'react'
 import { CSSTransitionGroup } from 'react-transition-group'; 
 
 export default function MenuBox (props) {
+
     return (
       <CSSTransitionGroup
       transitionName="example"

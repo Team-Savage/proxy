@@ -6,13 +6,15 @@ body {
 .header {
     font-size: 13px;
     background-color: aqua;
-    height: 60px;
+    height: 40px;
     width: 570px;
     border-bottom: 1px solid #444444;
 }
 
 .menu {
-    position: absolute;
+    position: relative;
+    left: 503px;
+    bottom: 2px;
 }
 
 .bill-category {
