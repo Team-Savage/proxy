@@ -9,14 +9,13 @@ import { clickMenuItem } from '../../actions/menuActions.js';
 class App extends Component {
     constructor(props) {
     super(props)
-
     }
 
     render() {
       return (
         <div>
           <Bill 
-          itemClickFn ={this.props.onItemClick} />
+          itemClickFn = {this.props.onItemClick} />
         </div>
       )
     }

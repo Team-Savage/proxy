@@ -12,7 +12,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       display: false,
-      appetizersDisplay: true,
+      appetizersDisplay: false,
       mainsDisplay: false,
       beveragesDisplay: false,
       extrasDisplay: false,
@@ -21,32 +21,7 @@ class App extends React.Component {
       beverageData: [],
       extraFoodData: [],
     }
-  }
-
-  componentDidMount() {
-    const appState = this.state;
-    const endpoint = window.location.pathname.slice(3);
-    axios.get(`/data/${endpoint}/extra`, {
-    }).then(function(response) {
-      appState.extraFoodData = response.data;
-    });
-
-    axios.get(`/data/${endpoint}/main`, {
-    }).then(function(response) {
-      appState.mainData = response.data;
-    });
-
-    axios.get(`/data/${endpoint}/beverage`, {
-    }).then(function(response) {
-      appState.beverageData = response.data;
-    });
-
-    axios.get(`/data/${endpoint}/appetizer`, {
-    }).then(function(response) {
-      appState.appetizerData = response.data;
-    });
-    
-    this.forceUpdate();
+    this.handleMenuCategoryClick = this.handleMenuCategoryClick.bind(this);
   }
   
   handleClick() {
@@ -55,38 +30,82 @@ class App extends React.Component {
     } else if(this.state.display) {
       this.setState({display: false});
     }
-
   }
 
   handleClickOutside() {
     this.setState({display: false})
-}
+  }
 
-  handleMenuCategoryClick(e) {
-    
+  handleMenuCategoryClick = (e) => { 
+    let appState = this;  
+    const endpoint = window.location.pathname.slice(3);
+
     if(e.currentTarget.value === 'Appetizer' && !this.state.appetizersDisplay) {
-      this.setState({appetizersDisplay: true, mainsDisplay: false});
+    axios.get(`/data/${endpoint}/appetizer`, {
+    }).then(function(response) {
+      appState.setState({appetizerData: response.data, mainData: [],
+        beverageData: [],
+        extraFoodData: [], 
+        appetizersDisplay: true,
+        mainsDisplay: false,
+        beveragesDisplay: false,
+        extrasDisplay: false
+      });
+    });
     } 
 
     if(e.currentTarget.value === 'Mains' && !this.state.mainsDisplay) {
+      axios.get(`/data/${endpoint}/main`, {
+      }).then(function(response) {
+        appState.setState({appetizerData: [], mainData: response.data,
+          beverageData: [],
+          extraFoodData: [], 
+          appetizersDisplay: false,
+          mainsDisplay: true,
+          beveragesDisplay: false,
+          extrasDisplay: false
+        });
+      });
       this.setState({mainsDisplay: true, appetizersDisplay: false, beveragesDisplay: false, extrasDisplay: false});
     } 
 
-    if(e.currentTarget.value === 'Mains' && !this.state.mainsDisplay) {
-      this.setState({mainsDisplay: true, appetizersDisplay: false, beveragesDisplay: false, extrasDisplay: false});
-    } 
+    // if(e.currentTarget.value === 'Mains' && !this.state.mainsDisplay) {
+    //   this.setState({mainsDisplay: true, appetizersDisplay: false, beveragesDisplay: false, extrasDisplay: false});
+    // } 
     
     if(e.currentTarget.value === 'Beverages' && !this.state.beveragesDisplay) {
-      this.setState({beveragesDisplay: true, appetizersDisplay: false, mainsDisplay: false, extrasDisplay: false});
+      axios.get(`/data/${endpoint}/beverage`, {
+      }).then(function(response) {
+        appState.setState({appetizerData: [], mainData: [],
+          beverageData: response.data,
+          extraFoodData: [], 
+          appetizersDisplay: false,
+          mainsDisplay: false,
+          beveragesDisplay: true,
+          extrasDisplay: false
+        });
+      });
+      //this.setState({beveragesDisplay: true, appetizersDisplay: false, mainsDisplay: false, extrasDisplay: false});
     } 
 
     if(e.currentTarget.value === 'Extras' && !this.state.extrasDisplay) {
-      this.setState({extrasDisplay: true, appetizersDisplay: false, mainsDisplay: false, beveragesDisplay: false});
+      //this.setState({extrasDisplay: true, appetizersDisplay: false, mainsDisplay: false, beveragesDisplay: false});
+      axios.get(`/data/${endpoint}/extra`, {
+      }).then(function(response) {
+        appState.setState({appetizerData: [], mainData: [],
+          beverageData: [],
+          extraFoodData: response.data, 
+          appetizersDisplay: false,
+          mainsDisplay: false,
+          beveragesDisplay: false,
+          extrasDisplay: true,
+        });
+      });
     } 
   }
 
   render() {
-  
+    console.log(this.state)
     return (
       <div className="menu-service">
       <button className="display-menu-button" 
