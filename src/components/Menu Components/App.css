@@ -1,4 +1,4 @@
- /* .menu-service {
+ .menu-service {
   position: absolute;
   z-index: 1;
 }
@@ -81,36 +81,37 @@
 
 .categoryButton:focus {
   opacity:.5!important;
-}  */
+} 
 .item-button {
-  /* padding: 50px;
+  padding: 10px;
   transition-duration: 1000ms;
   border-color: white;
   background-color: black;
   color: white; 
   opacity: 1;
   outline: none; 
-  margin: 3px;  */
+  margin: 5px;
   display: inline-block;
-  width: 40px;
-  height: 40px;
+  border-radius: 2px;
   font-size: 12px;
+  float: left;
+  top: 50%;
+  left: 50%;
   font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリ オ", "Meiryo", Helvetica, Arial, Verdana, sans-serif; 
 }
 
- /* .item-button:hover {
+ .item-button:hover {
   cursor: pointer;
   opacity: 0.5!important;
-}   */
+}  
 
 .display-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   opacity: 0.8;
-  /* height: auto;  */
-  /* margin-left: auto;
-  margin-right: auto;  */
-  align-items: start;
+  height: auto;  
+  margin-left: auto;
+  margin-right: auto;  
   top: 72px;
   width: 550px;
   border-color: white;
@@ -121,10 +122,10 @@
   position: absolute;
 }
 
-.display-wrapper :first-child {
+/* .display-wrapper :first-child {
   align-self: center;
-}
-/* 
+} */
+
 .nav-bar {
   opacity: 0.8;
   position: absolute;
@@ -144,4 +145,4 @@
 body {
   color: #333;
   font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリ オ", "Meiryo", Helvetica, Arial, Verdana, sans-serif;
-} */
+}
