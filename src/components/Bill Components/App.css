@@ -5,10 +5,10 @@ body {
 
 .header {
     font-size: 13px;
-    background-color: aqua;
     height: 40px;
     width: 570px;
-    border-bottom: 1px solid #444444;
+    color: black;
+    background-color:white;
 }
 
 .menu {
@@ -18,27 +18,43 @@ body {
 }
 
 .bill-category {
-display: flex;
-flex-direction: row;
-justify-content: space-around;
-height: 61;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 61;
+    background-color: aquamarine;
+    align-items: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .bill-container {
     position: relative;
-    width: 570px;
+    width: 568px;
     min-height: 528px;
     height: auto;
-    background-color: aquamarine;
+    background-color:white;
+    border-style: solid;
+    border-width: thin;
+    border-bottom: 0px;
+    border-color: rgb(233, 232, 232);
+    top: 0px;
 }
+
 
 .calculator-container {
     position: relative;
-    border-top: 0.5px solid grey;
-    background-color: cornflowerblue;
-    width: 570px;
+    background-color:white;
+    border-style: solid;
+    border-width: thin;
+    border-color: rgb(233, 232, 232);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 568px;
     height: 72px;
     align-content: center;
+    box-shadow: 0 1px 7px rgba(131, 125, 125, 0.05);
+    top: 500px;
 }
 
 .item {
@@ -47,6 +63,15 @@ height: 61;
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 0.5px solid grey;
+    align-items: center;
+}
+
+.item-buttons {
+    position: relative;
+    left: 60px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: row;
 }
 
 .qty {
@@ -67,6 +92,6 @@ height: 61;
 .itemContainer {
     position: relative;
     height: auto;
-    width: 570  px;
-    background-color: orange;
+    width: 570 px;
+    background-color: rgb(233, 232, 232);
 }

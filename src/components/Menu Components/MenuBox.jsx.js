@@ -40,14 +40,12 @@ export default function MenuBox (props) {
       <div className="menuContainer">
         <div className="nav-bar">
           <button className="appetizers categoryButton" onClick={(e) => {props.menuCategoryClick(e)}} value={"Appetizer"}>Appetizers</button> 
-          <button className="mains categoryButton" onClick={(e) => {props.menuCategoryClick(e)}} value={"Mains"}>Mains</button>
+          <button className="mains categoryButton" onClick={(e) => {props.menuCategoryClick(e)}} value={"Mains"}>Main Dishes</button>
           <button className="beverages categoryButton" onClick={(e) => {props.menuCategoryClick(e)}} value={"Beverages"}>Beverages</button>
-          <button className="extra categoryButton" onClick={(e) => {props.menuCategoryClick(e)}} value={"Extras"}>Extras</button>
         </div>
         <div className="display-wrapper">   
-        {buttons} 
+        { buttons } 
           </div>
-
       </div>
     </CSSTransitionGroup>
   )

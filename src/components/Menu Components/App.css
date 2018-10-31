@@ -83,7 +83,6 @@
   opacity:.5!important;
 } 
 .item-button {
-  padding: 10px;
   transition-duration: 1000ms;
   border-color: white;
   background-color: black;
@@ -92,17 +91,20 @@
   outline: none; 
   margin: 5px;
   display: inline-block;
-  border-radius: 2px;
+  border-radius: 15px;
   font-size: 12px;
   float: left;
   top: 50%;
   left: 50%;
+  height: 80px;
+  width:150px;
   font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリ オ", "Meiryo", Helvetica, Arial, Verdana, sans-serif; 
 }
 
  .item-button:hover {
   cursor: pointer;
   opacity: 0.5!important;
+  border-color: rgb(230, 230, 230);
 }  
 
 .display-wrapper {
@@ -113,7 +115,7 @@
   margin-left: auto;
   margin-right: auto;  
   top: 72px;
-  width: 550px;
+  width: 650px;
   border-color: white;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -122,20 +124,16 @@
   position: absolute;
 }
 
-/* .display-wrapper :first-child {
-  align-self: center;
-} */
-
 .nav-bar {
   opacity: 0.8;
   position: absolute;
   background-color: black;
-  width: 550px;
+  width: 650px;
   height: 72px;
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
-  justify-content: space-between;
+  justify-content: space-around;
   border-bottom: 1px solid white;
   border-color: white;
   border-top-left-radius: 5px;

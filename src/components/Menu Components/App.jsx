@@ -6,6 +6,7 @@ import { clickMenuItem } from '../../actions/menuActions.js';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import onClickOutside from "react-onclickoutside";
+import { Button, ButtonToolbar } from 'react-bootstrap';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,15 +20,19 @@ class App extends React.Component {
       appetizerData: [],
       mainData: [],
       beverageData: [],
-      extraFoodData: [],
+      extraFoodData: []
     }
     this.handleMenuCategoryClick = this.handleMenuCategoryClick.bind(this);
   }
   
-  handleClick() {
+  handleMouseDown = () => {
     if(!this.state.display) {
       this.setState({display: true});
-    } else if(this.state.display) {
+    } 
+  }
+
+  handleMouseLeave = () => {
+    if(this.state.display) {
       this.setState({display: false});
     }
   }
@@ -69,9 +74,9 @@ class App extends React.Component {
       this.setState({mainsDisplay: true, appetizersDisplay: false, beveragesDisplay: false, extrasDisplay: false});
     } 
 
-    // if(e.currentTarget.value === 'Mains' && !this.state.mainsDisplay) {
-    //   this.setState({mainsDisplay: true, appetizersDisplay: false, beveragesDisplay: false, extrasDisplay: false});
-    // } 
+    if(e.currentTarget.value === 'Mains' && !this.state.mainsDisplay) {
+      this.setState({mainsDisplay: true, appetizersDisplay: false, beveragesDisplay: false, extrasDisplay: false});
+    } 
     
     if(e.currentTarget.value === 'Beverages' && !this.state.beveragesDisplay) {
       axios.get(`/data/${endpoint}/beverage`, {
@@ -85,14 +90,13 @@ class App extends React.Component {
           extrasDisplay: false
         });
       });
-      //this.setState({beveragesDisplay: true, appetizersDisplay: false, mainsDisplay: false, extrasDisplay: false});
     } 
 
     if(e.currentTarget.value === 'Extras' && !this.state.extrasDisplay) {
-      //this.setState({extrasDisplay: true, appetizersDisplay: false, mainsDisplay: false, beveragesDisplay: false});
       axios.get(`/data/${endpoint}/extra`, {
       }).then(function(response) {
-        appState.setState({appetizerData: [], mainData: [],
+        appState.setState({appetizerData: [], 
+          mainData: [],
           beverageData: [],
           extraFoodData: response.data, 
           appetizersDisplay: false,
@@ -108,9 +112,12 @@ class App extends React.Component {
     console.log(this.state)
     return (
       <div className="menu-service">
-      <button className="display-menu-button" 
-      onClick={this.handleClick.bind(this)}></button>
+      <Button 
+      color="primary"
+      onMouseEnter={this.handleMouseDown.bind(this)}
+      >Menu</Button>
       {(this.state.display) ? <MenuBox
+      onMouseLeave = {this.handleMouseLeave.bind(this)}
       itemClick = {this.props.clickItem}
       menuCategoryClick={this.handleMenuCategoryClick.bind(this)}
       appState={this.state} 

@@ -67,14 +67,12 @@ export class Bill extends Component {
         break;
       }
     }
-
   }
 
   handleDeleteItem(itemName, itemPrice) { 
     let index;
     let copy = this.state.itemList.slice();
     let totalItemValue = JSON.parse(itemPrice);
-
      for(let i = 0; i < copy.length; i++) {
        if(copy[i].item === itemName) {
        index = i;
@@ -96,7 +94,6 @@ export class Bill extends Component {
  
   return (
       <div className="bill-service">
-        <div className="bill-container">
         <div className="header">
         <div className="menu">
         <Menu clickItem={this.handleItemClick.bind(this)}/>
@@ -106,7 +103,7 @@ export class Bill extends Component {
         <div>Price</div>
         <div>Quantity</div>
         </div>
-        </div>
+        <div className="bill-container">
         <div className="itemContainer">
         {(this.state.itemList) ?        
 
@@ -121,6 +118,7 @@ export class Bill extends Component {
             price={item.price} 
             billSubTotal={this.state.subTotal.toFixed(2)}/>
         }) : <div></div>}
+        </div>
         </div>
         </div>
         <Calculator 
